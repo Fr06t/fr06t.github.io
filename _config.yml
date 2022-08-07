@@ -8,18 +8,6 @@ author:
   name: Ghassan Shahzad
   bio: Hi, I'm Ghassan. I'm learning to be a full-stack developer. 
 
-#footer:
-#  links:
-#    - label: "Reddit"
-#    icon: ""
-#    url: https://reddit.com/u/fr06t
-#    - label: "Github"
-#    icon: ""
-#    url: https://github.com/fr06t
-#    - label: "Stackoverflow"
-#    icon: ""
-#    urL: https://stackoverflow.com/users/11578707/fr06t
-
 markdown: kramdown
 highlighter: rouge
 lsi: false
