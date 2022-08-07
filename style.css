@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2? family= JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700 & display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family= JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700 & display=swap'); 
 
 html{
     font-family: 'JetBrains Mono', monospace;
@@ -8,7 +8,7 @@ html{
     html{
         font-family: 'JetBrains Mono', monospace;
     }
-}
+}   
 *{
     margin:0;
     padding:0;
@@ -53,12 +53,12 @@ a:hover{
 }
 h1{
     font-weight:600;
-    font-size:24px;
+    font-size:32px;
     margin-bottom:8px
 }
 h2{
     font-weight:450;
-    font-size:20px;
+    font-size:24px;
     line-height:24px
 }
 .link{
@@ -74,12 +74,12 @@ h2{
 }
 h6{
     font-weight:600;
-    font-size:24px;
+    font-size:18px;
     margin-bottom:24px
 }
 h3{
     font-weight:600;
-    font-size:18px;
+    font-size:20px;
     line-height:24px;
     margin-bottom:2px
 }
