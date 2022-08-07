@@ -1,1 +1,45 @@
 theme: jekyll-theme-merlot
+locale: "en_US"
+title: Fr06t's Personal Site
+name: Ghassan Shahzad
+description: It ain't much but it's a portfolio.
+
+author:
+  name: Ghassan Shahzad
+  bio: Hi, I'm Ghassan. I'm learning to be a full-stack developer. 
+
+#footer:
+#  links:
+#    - label: "Reddit"
+#    icon: ""
+#    url: https://reddit.com/u/fr06t
+#    - label: "Github"
+#    icon: ""
+#    url: https://github.com/fr06t
+#    - label: "Stackoverflow"
+#    icon: ""
+#    urL: https://stackoverflow.com/users/11578707/fr06t
+
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
+
