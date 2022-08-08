@@ -27,12 +27,15 @@ body{
     -webkit-font-smoothing:antialiased
 }
 a{
-    color:inherit
+    color: #0401d1;
 }
 a:hover{
     text-decoration:underline
 }
-#content{
+a:visited{
+    color: #2826a5;
+}
+#content{   
     max-width:512px;
     margin:0 auto;
     padding:64px 32px
@@ -86,7 +89,8 @@ h3{
 p{
     font-size:18px;
     font-weight:450;
-    color:rgba(0,0,0,.64)
+    color:rgba(0,0,0,.64);
+    font-style: italic;
 }
 ul li{
     margin-bottom:32px
