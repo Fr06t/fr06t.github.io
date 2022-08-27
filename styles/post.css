@@ -6,9 +6,6 @@ html{
     font-family: 'Merriweather', serif;
 }
 *{
-    margin:0;
-    padding:0;
-    text-decoration:none;
     letter-spacing:.005em;
     font-variant-ligatures:contextual;
     -moz-font-feature-settings:'calt';
@@ -16,11 +13,6 @@ html{
     font-feature-settings:'calt'
 }
 body{
-    font-size:18px;
-    font-weight:450;
-    margin-top: 24px;
-    margin-bottom: 24px;
-    text-align: justify;
     background:#f5f5f5;
     color:#050505;
     -webkit-font-smoothing:antialiased
@@ -83,6 +75,13 @@ h3{
     line-height:24px;
     margin-bottom:24px
 }
+
+footer{
+    margin-top: 50px;
+    font-size: 18px;
+    font-style: italic;
+}
+
 p{
     font-size:18px;
     font-weight:450;
@@ -91,17 +90,11 @@ p{
     text-align: justify;
     color:rgba(0,0,0);
 }
-ul{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+
 ul li{
-    margin-left: 30px;
-    margin-bottom: 5px;
+    font-size: 18px;
 }
-ul li:last-of-type{
-    margin-bottom:0
-}
+
 @media screen and (max-width:400px){
     p{
         line-height:26px
