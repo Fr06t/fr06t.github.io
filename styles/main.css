@@ -22,18 +22,18 @@ html{
     font-feature-settings:'calt'
 }
 body{
-    background:#f5f5f5;
-    color:#050505;
+    background:#292929;
+    color:#f8f8f2;
     -webkit-font-smoothing:antialiased
 }
 a{
-    color: #0401d1;
+    color: #fcba03;
 }
 a:hover{
     text-decoration:underline
 }
 a:visited{
-    color: #2826a5;
+    color: rgba(182, 134, 1, 0.822);
 }
 #content{   
     max-width:512px;
@@ -65,7 +65,7 @@ h2{
     line-height:24px
 }
 .link{
-    font-size:18px;
+    font-size:20px;
     line-height:20px;
     margin-right:12px;
     font-weight:450
@@ -89,7 +89,7 @@ h3{
 p{
     font-size:18px;
     font-weight:450;
-    color:rgba(0,0,0,.64);
+    color:#f8f8f2da;
     font-style: italic;
 }
 ul li{
