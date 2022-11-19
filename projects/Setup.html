@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🖥️ My Personal Setup</title>
+    <meta name="description" content="It ain't much but it's a website" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+    <link rel="manifest" href="../images/site.webmanifest">
+    <link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="../images/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" type="text/css" href="../styles/post.css">
+</head>
+<body>
+    <h1>🖥️ My Personal Setup</h1>
+    <h2>Software</h2>
+    <p><strong>Operating System: </strong>Windows 10 (see below)</p>
+    <p><strong>Browser</strong>: Firefox with the <em>Arkenfox </em>user.js and the following extensions:</p>
+    <ul>
+        <li>uBlock Origin</li>
+        <li>Decentraleyes</li>
+    </ul>
+    <p><strong>Library Management: </strong>Calibre</p>
+    <p><strong>Modelling: </strong>Blender</p>
+    <p><strong>Programming:</strong></p>
+    <ul>
+        <li>VS Code as a general-purpose editor;</li>
+        <li>Visual Studio for C#;</li>
+    </ul>
+    <h2>Hardware</h2>
+    <p><strong>Laptop: </strong>Thinkpad W530; i7-3630qm, NVidia Quadro K1000m.</p>
+    <p><strong>Storage</strong>: A 128GB SSD for OS, and a 500GB HDD for everything else.</p>
+    <p><strong>Mods</strong>: Came with the backlight; installed 1080p TN display and 20GB of RAM (don&#39;t ask).</p>
+    <h2>Why W10?</h2>
+    <p>Buying a Thinkpad, then installing Windows 10 seems to be the most contradictory thing; so why? The answer is my NVidia GPU. I labored <em>much </em>in vain to get it to work on Arch, but to no avail. If you have one of these old Thinkpads with GPUs, you&#39;re <strong>not </strong>going to get it to work on Linux perfectly. I knew that, but I couldn&#39;t get it to work <em>at all</em>. There are a number of problems: first is determining your driver version. According to the <a href="https://www.nvidia.com/en-us/drivers/unix/legacy-gpu/">NVidia site</a>, my K1000m supports the 470xx driver. <strong>But that&#39;s wrong. </strong>In &#39;reality&#39;, and as my WM recommended, I have to use the 390xx (Fermi) drivers; I suspect this might be for OEM reasons. Anyways, I tried out the 470xx drivers unaware, and they failed. I then tried the 390xx driver... but that too failed. Why? I still haven&#39;t figured it out. I decided to uninstall Arch and use Pop!_OS (renowned for its NVidia support), but that was an even <em>worse </em>experience. For starters, neither the 390xx nor the 470xx drivers came installed (even with the NVidia ISO). But they couldn&#39;t be installed without downgrading the kernel; and that wasn&#39;t possible without major headaches on Pop!_OS. So, after a couple days of messing around, I installed W10 and voila, it worked! I plan to shift to Linux maybe once W10 support is withdrawn, but until then...</p>
+</body>
+</html>

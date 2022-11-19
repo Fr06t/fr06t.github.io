@@ -13,6 +13,9 @@ html{
     font-feature-settings:'calt'
 }
 body{
+    max-width:768px;
+    margin:0 auto;
+    padding:64px 32px;
     background:#292929;
     color:#f8f8f2;
     -webkit-font-smoothing:antialiased
@@ -26,19 +29,7 @@ a:hover{
 a:visited{
     color: rgba(182, 134, 1, 0.822);
 }
-#content{   
-    max-width:512px;
-    margin:0 auto;
-    padding:64px 32px
-}
-.section{
-    margin-bottom:64px
-}
-.section:last-of-type{
-    border-bottom:0;
-    padding-bottom:0;
-    margin-bottom:0
-}
+
 h1{
     font-family: 'Montserrat', sans-serif;
     font-weight:600;
@@ -52,17 +43,6 @@ h2{
     font-size:24px;
     line-height:24px;
     margin-top: 20px;
-}
-.link{
-    font-size:18px;
-    line-height:20px;
-    margin-right:12px;
-    font-weight:450
-}
-.links .link{
-    margin-right:0;
-    display:block;
-    margin-bottom:16px
 }
 h6{
     font-weight:600;
@@ -83,16 +63,16 @@ footer{
 }
 
 p{
-    font-size:18px;
-    font-weight:450;
-    margin-top: 24px;
-    margin-bottom: 24px;
+    font-size:17px;
+    margin-top: 0px;
+    margin-bottom: 8px;
     text-align: justify;
-    color:f8f8f2;
+    line-height: 1.5;
+    color: #f8f8f2;
 }
 
 ul li{
-    font-size: 18px;
+    font-size: 17px;
     }
 
 @media screen and (max-width:400px){
