@@ -18,26 +18,129 @@
 </head>
 <body>
     <h1>🖥️ My Personal Setup</h1>
-    <h2>Software</h2>
-    <p><strong>Operating System: </strong>Windows 10 (see below)</p>
-    <p><strong>Browser</strong>: Firefox with the <em>Arkenfox </em>user.js and the following extensions:</p>
+    <p>Check out my <a href="https://github.com/fr06t/dotfiles/">dotfiles</a> for all the config stuff.</p>
+    <p><img src="https://github.com/Fr06t/dotfiles/blob/main/Pictures/Screenshot_2022-12-03_12-54-45.png" alt=""></p>
+    <p><img src="https://github.com/Fr06t/dotfiles/blob/main/Pictures/Screenshot_2022-12-03_13-11-10.png" alt=""></p>
+    <p><img src="https://github.com/Fr06t/dotfiles/blob/main/Pictures/Screenshot_2022-12-03_13-14-56.png" alt=""></p>
+    <h2 id="hardware">Hardware</h2>
     <ul>
-        <li>uBlock Origin</li>
-        <li>Decentraleyes</li>
+        <li><strong>Model</strong>
+            <ul>
+                <li>Thinkpad 243852U (Thinkpad W530)</li>
+            </ul>
+        </li>
+        <li><strong>BIOS</strong>
+            <ul>
+                <li>LENOVO G5ETB6WW (2.76, 2019)</li>
+            </ul>
+        </li>
+        <li><strong>Processor</strong>
+            <ul>
+                <li>i7-3630QM (3.4GHz)
+                    <ul>
+                        <li>1 physical processor; 4 cores; 8 threads</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><strong>Memory</strong> (20GB/32GB)
+            <ul>
+                <li>2x4GB DDR3 SDRAM 1600Hz</li>
+                <li>1x8GB DDR3 SDRAM 1600Hz</li>
+                <li>1x4GB DDR3 SDRAM 1600Hz</li>
+            </ul>
+        </li>
+        <li><strong>Graphics</strong>
+            <ul>
+                <li>Nvidia Quadro K1000M (2GB)</li>
+            </ul>
+        </li>
+        <li><strong>Storage</strong>
+            <ul>
+                <li>INTEL SSDSC2BW120H6 - 111.8 GiB</li>
+                <li>SAMSUNG SSD PM851 mSATA 128GB - 119.2 GiB</li>
+                <li>TOSHIBA MQ02ABF050H - 465.8 GiB</li>
+            </ul>
+        </li>
     </ul>
-    <p><strong>Library Management: </strong>Calibre</p>
-    <p><strong>Modelling: </strong>Blender</p>
-    <p><strong>Programming:</strong></p>
+    <h2 id="software">Software</h2>
     <ul>
-        <li>VS Code as a general-purpose editor;</li>
-        <li>Visual Studio for C#;</li>
+        <li>Operating System
+            <ul>
+                <li>Fedora 37 (x86_64)</li>
+            </ul>
+        </li>
+        <li>Kernel
+            <ul>
+                <li>Linux 6.0.9</li>
+            </ul>
+        </li>
+        <li>Desktop Environment
+            <ul>
+                <li>XFCE 4.16</li>
+            </ul>
+        </li>
+        <li>Window Manager
+            <ul>
+                <li>XFWM4</li>
+                <li>Terminus Font</li>
+            </ul>
+        </li>
+        <li>Terminal Emulator
+            <ul>
+                <li>Alacritty</li>
+            </ul>
+        </li>
+        <li>Shell
+            <ul>
+                <li>Zshell</li>
+            </ul>
+        </li>
+        <li>Themes
+            <ul>
+                <li>GTK: Nordic [GTK2/3]</li>
+                <li>XFWM: Nordic</li>
+                <li>Icon: Papirus-Dark</li>
+            </ul>
+        </li>
+        <li>Web Browser
+            <ul>
+                <li>Firefox with custom Arkenfox user.js and userChrome, and the following extensions:
+                    <ol>
+                        <li>xBrowserSync</li>
+                        <li>LeechBlock</li>
+                        <li>FastForward</li>
+                        <li>uBlock Origin</li>
+                        <li>ClearURLs</li>
+                        <li>Bypass Paywalls Clean</li>
+                        <li>DeCentralEyes</li>
+                    </ol>
+                </li>
+            </ul>
+        </li>
+        <li>Text Editing/Coding/Word Processing
+            <ul>
+                <li>Visual Studio Code (for actual programs)</li>
+                <li>Neovim (for simple stuff in the terminal)</li>
+                <li>Gedit (for simple stuff)</li>
+                <li>MarkText (for markdown)</li>
+            </ul>
+        </li>
+        <li>Documents
+            <ul>
+                <li>LibreOffice Suite</li>
+                <li>Foliate (for reading Epubs)</li>
+                <li>Evince (for reading PDFs)</li>
+                <li>Xournal (for editing PDFs)</li>
+            </ul>
+        </li>
+        <li>Gaming
+            <ul>
+                <li>Lutris (for non-steam library mgmt)</li>
+                <li>Steam</li>
+            </ul>
+        </li>
     </ul>
-    <h2>Hardware</h2>
-    <p><strong>Laptop: </strong>Thinkpad W530; i7-3630qm, NVidia Quadro K1000m.</p>
-    <p><strong>Storage</strong>: A 128GB SSD for OS, and a 500GB HDD for everything else.</p>
-    <p><strong>Mods</strong>: Came with the backlight; installed 1080p TN display and 20GB of RAM (don&#39;t ask).</p>
-    <h2>Why W10?</h2>
-    <p>Buying a Thinkpad, then installing Windows 10 seems to be the most contradictory thing; so why? The answer is my NVidia GPU. I labored <em>much </em>in vain to get it to work on Arch, but to no avail. If you have one of these old Thinkpads with GPUs, you&#39;re <strong>not </strong>going to get it to work on Linux perfectly. I knew that, but I couldn&#39;t get it to work <em>at all</em>. There are a number of problems: first is determining your driver version. According to the <a href="https://www.nvidia.com/en-us/drivers/unix/legacy-gpu/">NVidia site</a>, my K1000m supports the 470xx driver. <strong>But that&#39;s wrong. </strong>In &#39;reality&#39;, and as my WM recommended, I have to use the 390xx (Fermi) drivers; I suspect this might be for OEM reasons. Anyways, I tried out the 470xx drivers unaware, and they failed. I then tried the 390xx driver... but that too failed. Why? I still haven&#39;t figured it out. I decided to uninstall Arch and use Pop!_OS (renowned for its NVidia support), but that was an even <em>worse </em>experience. For starters, neither the 390xx nor the 470xx drivers came installed (even with the NVidia ISO). But they couldn&#39;t be installed without downgrading the kernel; and that wasn&#39;t possible without major headaches on Pop!_OS. So, after a couple days of messing around, I installed W10 and voila, it worked! I plan to shift to Linux maybe once W10 support is withdrawn, but until then...</p>
     <footer><a href="../index.html">Home</a> | <a href="mailto:ghass.shahzad@gmail.com" class="link">Email</a></footer>
 </body>
 </html>
