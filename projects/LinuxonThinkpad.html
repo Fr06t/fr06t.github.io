@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐧 Fedora on Thinkpad</title>
+    <meta name="description" content="It ain't much but it's a website" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+    <link rel="manifest" href="../images/site.webmanifest">
+    <link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="../images/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" type="text/css" href="../styles/post.css">
+</head>
+<body>
+    <h1 id="installinglinuxonathinkpadxx30xx40">Installing Linux on a Thinkpad xx30/xx40</h1>
+
+    <p>I've got a Thinkpad W530 and a massive itch to install Linux. I've encountered problems on this device when I first
+        installed Linux, which was right after buying it. The GPU just wouldn't work on either Arch or Pop!_OS, the battery
+        drained like hell, and the disk performance was meh. After understanding the system a little better... on Windows,
+        I've decided to give Fedora a shot and document my findings and process. I <strong>chose Fedora</strong> for its
+        brilliant Nvidia support; it's not a feature Fedora is known for, nor one flouted by its developers, but I've
+        <em>never</em> had a problem setting up Nvidia GPU drivers on Fedora. Of course, this is only compared to other
+        Linux distributions, but Optimus issues are <em>very easily</em> resolved, with some drawbacks (as far as I am
+        aware).</p>
+
+    <p><strong>Some warnings (really important)</strong>:</p>
+
+    <ul>
+        <li>
+            <p><strong>Make sure</strong> to check your ThinkWiki page before installing anything. I found on this <a
+                    href="https://www.thinkwiki.org/wiki/Category:W540">W540</a> page that
+                <strong>installing linux with a BIOS version prior to 2.08 will brick your system on that device</strong>.
+                Just go <a href="https://www.thinkwiki.org/wiki/Category:Models">here</a>. ThinkWiki is also the place to go
+                if you've got any device-specific problems.</p>
+        </li>
+
+        <li>
+            <p>Make sure you've backed up all your data.</p>
+        </li>
+    </ul>
+
+    <h2 id="installation">Installation</h2>
+
+    <h3 id="specifications">Specifications</h3>
+
+    <p>For my Thinkpad:</p>
+
+    <ul>
+        <li><strong>Model</strong>
+
+
+            <ul>
+                <li>Thinkpad 243852U (Thinkpad W530)</li>
+            </ul>
+        </li>
+
+        <li><strong>BIOS</strong>
+
+
+            <ul>
+                <li>LENOVO G5ETB6WW (2.76, 2019)</li>
+            </ul>
+        </li>
+
+        <li><strong>Processor</strong>
+
+
+            <ul>
+                <li>i7-3630QM (3.4GHz)</li>
+
+                <li>1 physical processor; 4 cores; 8 threads</li>
+            </ul>
+        </li>
+
+        <li><strong>Memory</strong> (20GB/32GB)
+
+
+            <ul>
+                <li>2x4GB DDR3 SDRAM 1600Hz</li>
+
+                <li>1x8GB DDR3 SDRAM 1600Hz</li>
+
+                <li>1x4GB DDR3 SDRAM 1600Hz</li>
+            </ul>
+        </li>
+
+        <li><strong>Graphics</strong>
+
+
+            <ul>
+                <li>Nvidia Quadro K1000M (2GB)</li>
+            </ul>
+        </li>
+
+        <li><strong>Storage</strong>
+
+
+            <ul>
+                <li>INTEL SSDSC2BW120H6 - 111.8 GiB</li>
+
+                <li>SAMSUNG SSD PM851 mSATA 128GB - 119.2 GiB</li>
+
+                <li>TOSHIBA MQ02ABF050H - 465.8 GiB</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p>Benchmarks (post-install) rival the AMD Ryzen 5 3500U~ on multi-thread/core, but struggle a bit on single-thread:</p>
+
+    <ul>
+        <li>CPU Blowfish (Single-thread): 10.39</li>
+
+        <li>CPU Blowfish (Multi-thread): 67.64</li>
+
+        <li>CPU Blowfish (Multi-core): 39.57</li>
+    </ul>
+
+    <h3 id="gettingaliveusb">Getting a Live USB</h3>
+
+    <p>Some Thinkpads support CD/DVD drives, but I had mine removed for a HDD Caddy. Therefore, I will cover only creating a
+        Live USB. Thinkpad's don't support booting from SD Cards either, unfortunately, unless you already have GRUB
+        installed and do some tedious tinkering.</p>
+
+    <p>For installation, the simplest method is to just install the <a
+            href="https://getfedora.org/en/workstation/download/">Fedora Media Writer</a>. One Windows you simply have to
+        run the installer through. On Arch, it's available on the AUR with <code>pacman -S mediawriter</code>; on Fedora,
+        it's a simple <code>dnf install mediawriter</code>. After running it, choose the Download automatically option and
+        pick your flavor; newbies to Linux should go for workstation and its GNOME environment, similar to MacOS. I chose
+        XFCE, but it's not much different. After letting it download and flash the ISO, shut down your computer.</p>
+
+    <h3 id="booting">Booting</h3>
+
+    <p>Before booting to the LiveISO, you may want to change certain settings in your BIOS. Start your computer and press
+        your F12 button repeatedly to boot into the Quick List; choose Setup and you're in the menu. If this doesn't work
+        for you, repeatedly press the ThinkVantage button and <em>then</em> press the F1 or F3 button. This boots directly
+        to Setup, but it's a bit finicky for me on the latest BIOS.</p>
+
+    <p>Disable SecureBoot and enable UEFI. Also force Nvidia Optimus and enable OS-Based Optimizations in Display settings.
+        If you wanna mess with any disk settings, most of which will be unchangeable after installing an OS, now's your
+        time.</p>
+
+    <p>After you're done, boot to the Quick List again and select your USB.</p>
+
+    <h3 id="theinstaller">The Installer</h3>
+
+    <p>On the desktop should be an installer. <strong>Before opening it</strong>, connect to the internet and wipe all your
+        drives that you're going to use for the install in gparted, or install gnome-disk-utility and do it there. You can't
+        do this in the installer, and if you're drives are populated it won't work. Obviously, back up your data before
+        doing this. Be careful to not wipe a drive that <em>you're not going to use</em> in the install. I have a section on
+        disk layout below, so read through that to figure out whether you're going to use a drive or not.</p>
+
+    <p>Once you're in the installer, go through each option. Set a root password, create a user account, choose a hostname,
+        and whatever else. It's nice to not have to do this <em>after</em> install. This should finally leave determining
+        your disk layout.</p>
+
+    <p>Choose the disks you want to install on. Generally, you only really need two drives. I chose my two SSDs: an mSata
+        one and the normal SSD. I plan to use the HDD for backups and static data. You should pick a main drive for your
+        system files and boot partition, and a secondary drive for /home and whatever else. The faster one should generally
+        be the main drive.</p>
+
+    <p>Once you've chosen them, change the partition format to Standard Partition from btrfs, unless you know what you're
+        doing. You should have a couple of mountpoints to choose from:</p>
+
+    <ul>
+        <li>/boot/ -- if you haven't enabled UEFI, and are using legacy, this should be a separate partition of 1GB on the
+            main drive;</li>
+
+        <li>/boot/efi -- if you're using UEFI, then this should be a separate partition of 1GB on the main drive;</li>
+
+        <li>/var -- used to store logs; I would not recommend separating this. If you do, give it plenty (10GB+) of storage
+            and put it on the secondary drive;</li>
+
+        <li>/home -- the home partition; it is smart to have this separate so you can distro-hop or multi-boot and still
+            retain all your important data and dotfiles. It should be on the secondary drive; I've encrypted mine, and you
+            should yours too.</li>
+
+        <li>swap -- should be 0.5x your RAM if you have 16GB+, 1x if you have 8GB, and 2x if you have 4GB. Splitting it
+            between the two drives also lightens the load</li>
+
+        <li>/ -- the root mountpoint; where all the system files are stored. Should be on the main drive;</li>
+    </ul>
+
+    <p>See my example as a reference:</p>
+
+    <pre><code>/dev/sda -- INTEL SSD 120GB
+    /sda1 -- /home (rest)
+    /sda2 -- swap (5GB)
+/dev/sdb -- TOSHIBA HDD 500GB
+    /sdb1 -- (500GB)
+/dev/sdc -- SAMSUNG MSATA SSD 128GB
+    /sdc1 -- /boot/efi (1GB)
+    /sdc2 -- / (rest)
+    /sdc3 -- swap (5GB)
+    </code></pre>
+
+    <p>Once you're done with that, run through the install. That's it! Reboot, remove your installation media, and you've
+        got Linux!</p>
+
+    <h2 id="settingup">Setting Up</h2>
+
+    <p>Immediately after booting up, I changed my dnf.conf to:</p>
+
+    <pre><code>[main]
+gpgcheck=1
+installonly_limit=3
+clean_requirements_on_remove=True
+best=False
+skip_if_unavailable=True
+deltarpm=True
+keepcache=True
+check_config_file_age=False
+metadata_expire=1
+max_parallel_downloads=20
+</code></pre>
+
+<p>This should speed dnf up. After this, run <code>sudo dnf update --refresh</code> to update your system. While that's
+    running in the background, go through the settings manager and tweak it to your preferences. Also run some other
+    commands:</p>
+
+<pre><code class="bash language-bash">sudo systemctl enable fstrim.timer ## ssd tweak
+## Flatpak setup
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-modify --disable fedora
+flatpak install flathub com.github.tchx84.Flatseal
+sudo flatpak override --filesystem=$HOME/.themes
+sudo flatpak override --filesystem=$HOME/.icons
+sudo flatpak override --filesystem=$HOME/.fonts
+sudo flatpak override --filesystem=xdg-config/gtk-3.0
+sudo flatpak override --filesystem=xdg-config/gtk-4.0
+sudo flatpak override --show
+</code></pre>
+
+<p>After the update is finished, reboot your system and run through the following installs (if you want)</p>
+
+<pre><code class="bash language-bash">## Multimedia Codes
+sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+sudo dnf install lame\* --exclude=lame-devel
+sudo dnf group upgrade --with-optional Multimedia
+
+## Installing ti
+sudo dnf install git
+
+## Common fonts
+sudo dnf install \
+    fira-code-fonts \
+    google-noto-sans-fonts \
+    google-noto-serif-fonts \
+    google-noto-sans-mono-fonts \
+    'google-roboto*fonts' \
+    'google-droid*fonts' \
+    'mozilla-fira*fonts' \
+    'adobe*pro-fonts' \
+    'dejavu-sans*fonts' \
+    'dejavu-serif*fonts' \
+    fontawesome-fonts \
+    levien-inconsolata-fonts \
+    jetbrains-mono-fonts-all \
+    ibm-plex-fonts-all \
+    pt-sans-fonts \
+    open-sans-fonts
+sudo dnf install cabextract xorg-x11-font-utils
+
+## Microsoft Fonts
+sudo rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
+
+## RPM Fusion (must be installed for GPU drivers; useful otherwise)
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+## Cleaning up
+sudo dnf upgrade --refresh
+flatpak update
+sudo dnf autoremove
+sudo dnf clean all
+flatpak uninstall --unused
+flatpak uninstall --delete-data
+    </code></pre>
+
+    <p>Now, let's set up TLP, the fans, and the GPU. First, you must determine the correct driver version for your GPU
+        device. Run <code>lspci -k | grep -A 2 -E "(VGA|3D)"</code> and you should get your GPU code-name.</p>
+
+<pre><code class="bash language-bash">00:02.0 VGA compatible controller: Intel Corporation 3rd Gen Core processor Graphics Controller (rev 09)
+Subsystem: Lenovo Device 21f5
+Kernel driver in use: i915
+--
+01:00.0 VGA compatible controller: NVIDIA Corporation GK107GLM [Quadro K1000M] (rev a1)
+Subsystem: Lenovo Device 21f5
+Kernel driver in use: nvidia
+    </code></pre>
+
+    <p>Make sure to copy or memorize the code-names, in my case 'GK107'. Go to the <a
+            href="https://nouveau.freedesktop.org/CodeNames.html">nouveau</a> code-names page and find your code-name. It
+        should give a family,in my case 'Kepler'. If you have a Maxwell-series GPU or newer, you <strong>do not</strong>
+        need to append any version; just install the drivers like:</p>
+
+    <pre><code class="bash language-bash">sudo dnf install xorg-x11-drv-nvidia akmod-nvidia
+sudo dnf install xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs vdpauinfo libva-vdpau-driver libva-utils vulkan
+    </code></pre>
+
+    <p>If you have a Kepler-series GPU like me:</p>
+
+    <pre><code class="bash language-bash">sudo dnf install xorg-x11-drv-nvidia-470xx akmod-nvidia-470xx
+sudo dnf install xorg-x11-drv-nvidia-470xx-cuda xorg-x11-drv-nvidia-470xx-cuda-libs vdpauinfo libva-vdpau-driver libva-utils vulkan
+    </code></pre>
+
+    <p>If you have a Fermi-series GPU:</p>
+
+    <pre><code class="bash language-bash">sudo dnf install xorg-x11-drv-nvidia-390xx akmod-nvidia-390xx
+sudo dnf install xorg-x11-drv-nvidia-390xx-cuda xorg-x11-drv-nvidia-390x-cuda-libs vdpauinfo libva-vdpau-driver libva-utils vulkan
+    </code></pre>
+
+    <p>If you have a Tesla-series GPU:</p>
+
+    <pre><code class="bash language-bash">sudo dnf install xorg-x11-drv-nvidia-340xx akmod-nvidia-340xx
+sudo dnf install xorg-x11-drv-nvidia-340xx-cuda xorg-x11-drv-nvidia-340xx-cuda-libs vdpauinfo libva-vdpau-driver libva-utils vulkan
+    </code></pre>
+
+    <p><strong>DO NOT REBOOT.</strong> Instead, wait ~10 minutes and execute the following commands:</p>
+
+    <pre><code class="bash language-bash">sudo akmods --force
+sudo dracut --force
+    </code></pre>
+
+    <p>In the meanwhile, setup TLP. TLP has special support for Thinkpad's, which is why I chose it specifically. You can
+        try out any power-management tool, however. Also download the TLPUI for easier use:</p>
+
+    <pre><code class="bash language-bash">## Installs TLP itself
+sudo dnf install tlp tlp-rdw
+sudo systemctl enable tlp.service
+
+## Downlodas TLPUI
+git clone https://github.com/d4nj1/TLPUI/
+cd TLPUI
+python3 -m tlpui
+    </code></pre>
+
+    <p>Mess around with the settings as you see fit. Finally, let's setup the fans:</p>
+
+    <pre><code class="bash language-bash">sudo dnf install thinkfan lm_sensors
+sudo sensors-detect
+sudo sh -c "find /sys/devices -type f -name 'temp*_input' | xargs -I {} echo "hwmon {}" &gt;&gt; /etc/thinkfan.conf"
+sudo systemctl enable thinkfan
+    </code></pre>
+
+    <p>Once done with both, you can now reboot.</p>
+
+    <h2 id="customization">Customization</h2>
+
+    <p>This is for my own reference, this part can be skipped. Install Terminus and TerminessTTF.</p>
+
+    <pre><code class="bash language-bash">sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc 
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" &gt; /etc/yum.repos.d/vscode.repo'
+sudo dnf check-update
+
+sudo dnf install alacritty neovim zsh gedit foliate picom xournal evince calibre code
+
+sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply fr06t
+chezmoi update -v
+
+chsh -s $(which zsh)
+    </code></pre>
+    <ol>
+        <li>
+            <p>Change default terminal and add shortcut for alacritty.</p>
+        </li>
+
+        <li>
+            <p>Add picom to startup and session.</p>
+        </li>
+
+        <li>
+            <p>Restore xfce4-panel.</p>
+        </li>
+
+        <li>
+            <p>Change system font to TerminessTTF.</p>
+        </li>
+
+        <li>
+            <p>Download arkenfox user.js and userChrome</p>
+        </li>
+
+        <li>
+            <p>Download firefox extensions:</p>
+
+            <ol>
+                <li>
+                    <p>xBrowserSync</p>
+                </li>
+
+                <li>
+                    <p>LeechBlock</p>
+                </li>
+
+                <li>
+                    <p>FastForward</p>
+                </li>
+
+                <li>
+                    <p>uBlock Origin</p>
+                </li>
+
+                <li>
+                    <p>ClearURLs</p>
+                </li>
+
+                <li>
+                    <p>Bypass Paywalls Clean</p>
+                </li>
+
+                <li>
+                    <p>DeCentralEyes</p>
+                </li>
+            </ol>
+        </li>
+    </ol>
+
+    <h2 id="extras">Extras</h2>
+
+    <p>If you wish to enable fingerprint unlock, <a href="https://wiki.archlinux.org/title/fprint">fprintd</a> is your
+        friend. Make sure to check <code>lsusb</code> to see if you've got one. It <em>is</em> DM specific, so make sure to
+        search for your DM-specific configuration.</p>
+
+    <footer><a href="../index.html">Home</a> | <a href="mailto:ghass.shahzad@gmail.com" class="link">Email</a></footer>
+</body>
+</html>

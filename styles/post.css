@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 html{
-    font-family: 'Merriweather', serif;
+    font-family: 'JetBrains Mono', monospace;
 }
 *{
     letter-spacing:.005em;
@@ -31,14 +31,14 @@ a:visited{
 }
 
 h1{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     font-weight:600;
     font-size:32px;
     margin-bottom:8px;
     text-align: left;
 }
 h2{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     font-weight:600;
     font-size:24px;
     line-height:24px;
@@ -59,7 +59,8 @@ h3{
 footer{
     margin-top: 50px;
     font-size: 18px;
-    font-style: italic;
+    font-style: bold;
+    text-align: center;
 }
 
 p{
@@ -70,6 +71,8 @@ p{
     line-height: 1.5;
     color: #f8f8f2;
 }
+
+code{background-color: ;}
 
 ul li{
     font-size: 17px;
@@ -86,3 +89,15 @@ ul li{
     }
 }
 
+pre {
+    display: inline-block; white-space: pre-wrap;
+    font-family: 'Courier New', Courier, monospace;
+    border-left: 3px solid #b8bb26;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+}
