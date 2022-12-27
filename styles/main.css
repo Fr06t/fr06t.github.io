@@ -1,14 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family= JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700 & display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root{
+	--bg-color: #282a36;
+	--fg-color: #f8f8f2;
+	--highlight-color: #bd93f9;
+	--light-highlight-color: #e2d2fa;
+	--main-font: 'JetBrains Mono', monospace;
+}
 
 html{
-    font-family: 'JetBrains Mono', monospace;
+    font-family: var(--main-font);
+    max-width:512px;
+    margin:0 auto;
+    padding:64px 32px
 }
-@supports(font-variation-settings:normal){
-    html{
-        font-family: 'JetBrains Mono', monospace;
-    }
-}   
+
 *{
     margin:0;
     padding:0;
@@ -16,104 +22,90 @@ html{
     text-decoration:none;
     box-sizing:border-box;
     letter-spacing:.005em;
-    font-variant-ligatures:contextual;
-    -moz-font-feature-settings:'calt';
-    -webkit-font-feature-settings:'calt';
-    font-feature-settings:'calt'
 }
+
 body{
-    background:#292929;
-    color:#f8f8f2;
-    -webkit-font-smoothing:antialiased
+    background: var(--bg-color);
+    color: var(--fg-color);
 }
+
 a{
-    color: #fcba03;
+    color: var(--highlight-color);
 }
+
 a:hover{
     text-decoration:underline
 }
+
 a:visited{
-    color: rgba(182, 134, 1, 0.822);
+    color: var(--light-highlight-color);
 }
-#content{   
-    max-width:512px;
-    margin:0 auto;
-    padding:64px 32px
-}
+
 .section{
     margin-bottom:64px
 }
+
 .section:last-of-type{
     border-bottom:0;
     padding-bottom:0;
     margin-bottom:0
 }
+
 .me{
     width:48px;
     height:48px;
     border-radius:24px;
     margin-bottom:12px
 }
+
 h1{
     font-weight:600;
     font-size:32px;
     margin-bottom:8px
 }
+
 h2{
     font-weight:450;
     font-size:24px;
     line-height:24px
 }
+
 .link{
     font-size:20px;
     line-height:20px;
     margin-right:12px;
     font-weight:450
 }
+
 .links .link{
     margin-right:0;
     display:block;
     margin-bottom:16px
 }
+
 h6{
     font-weight:600;
     font-size:18px;
     margin-bottom:24px
 }
+
 h3{
     font-weight:700;
     font-size:22px;
     line-height:24px;
     margin-bottom:24px
 }
+
 p{
     font-size:18px;
     font-weight:450;
-    color:#f8f8f2da;
     font-style: italic;
 }
+
 ul li{
     margin-bottom:20px
 }
+
 ul li:last-of-type{
     margin-bottom:0
-}
-@media screen and (max-width:400px){
-    p{
-        line-height:26px
-    }
-    .long{
-        line-height:32px;
-        margin-top:-4px;
-        margin-bottom:12px!important
-    }
-}
-h2.logo{
-    display:inline-block
-}
-svg.logo{
-    display:inline-block;
-    position:absolute;
-    margin-top:.07em;
-    margin-left:.35em
 }
